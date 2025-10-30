@@ -17,21 +17,21 @@
 }
 </script>
 </head>
-  <body class="bg-gray-900">
+  <body class="bg-gray-900 print:bg-white">
     <div id="root">
-      <div class="min-h-screen bg-gray-900 text-white p-2 sm:p-4 md:p-4">
+      <div class="min-h-screen bg-gray-900 print:bg-white text-white p-2 sm:p-4 md:p-4 print:p-0">
         <header class="text-center mb-4 md:mb-6">
-          <h1 class="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">
+          <h1 class="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600 print:text-black print:bg-none">
             Keyboard Shortcut Overview
           </h1>
-          <p class="text-gray-400 mt-1 text-base">A clean and modern visualization of function key shortcuts.</p>
+          <p class="text-gray-400 print:text-gray-800 mt-1 text-base">A clean and modern visualization of function key shortcuts.</p>
         </header>
         <main>
-          <div id="shortcut-grid" class="flex flex-wrap justify-center gap-3">
+          <div id="shortcut-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 print:grid-cols-3 gap-3 print:gap-2">
             <!-- Shortcut cards will be injected here by JavaScript -->
           </div>
         </main>
-        <footer class="text-center mt-6 text-gray-500 text-sm">
+        <footer class="text-center mt-6 text-gray-500 print:text-gray-700 text-sm">
           <p>Generated from source image.</p>
         </footer>
       </div>
@@ -106,17 +106,17 @@
 
         const createShortcutDetailHTML = (shortcutInfo, keys) => {
           const keyDisplay = keys.split('+').map(key => 
-            `<kbd class="px-1.5 py-0.5 text-xs font-semibold text-cyan-200 bg-gray-700 border border-gray-600 rounded-md">${key.trim()}</kbd>`
+            `<kbd class="px-1.5 py-0.5 text-xs font-semibold text-cyan-200 print:text-black bg-gray-700 print:bg-gray-200 border border-gray-600 print:border-gray-400 rounded-md">${key.trim()}</kbd>`
           ).join('');
 
-          const secondaryText = shortcutInfo.secondary ? `<p class="text-xs text-gray-400">${shortcutInfo.secondary}</p>` : '';
-          const tertiaryText = shortcutInfo.tertiary ? `<p class="text-xs text-gray-400">${shortcutInfo.tertiary}</p>` : '';
+          const secondaryText = shortcutInfo.secondary ? `<p class="text-xs text-gray-400 print:text-gray-600">${shortcutInfo.secondary}</p>` : '';
+          const tertiaryText = shortcutInfo.tertiary ? `<p class="text-xs text-gray-400 print:text-gray-600">${shortcutInfo.tertiary}</p>` : '';
 
           return `
-            <div class="bg-gray-800/50 p-2 rounded-lg h-full flex flex-col justify-center">
+            <div class="bg-gray-800/50 print:bg-gray-50 p-2 rounded-lg h-full flex flex-col justify-center">
               <div class="flex items-center gap-1">${keyDisplay}</div>
               <div class="mt-1">
-                <p class="text-base font-bold text-white">${shortcutInfo.primary}</p>
+                <p class="text-base font-bold text-white print:text-black">${shortcutInfo.primary}</p>
                 ${secondaryText}
                 ${tertiaryText}
               </div>
@@ -130,7 +130,7 @@
           const shiftFDetail = createShortcutDetailHTML(shortcut.shift_f, `Shift + ${shortcut.key}`);
           
           allCardsHTML += `
-            <div class="bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 rounded-xl shadow-lg hover:shadow-cyan-500/20 transition-all duration-300 transform hover:-translate-y-1 w-56">
+            <div class="bg-gradient-to-br from-gray-800 to-gray-900 print:bg-white border border-gray-700 print:border-gray-300 rounded-xl shadow-lg print:shadow-none hover:shadow-cyan-500/20 transition-all duration-300 transform hover:-translate-y-1 print:transform-none">
               <div class="p-2 flex flex-col gap-2">
                 ${fDetail}
                 ${shiftFDetail}
