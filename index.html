@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -26,7 +27,7 @@
           <p class="text-gray-400 mt-1 text-base">A clean and modern visualization of function key shortcuts.</p>
         </header>
         <main>
-          <div id="shortcut-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 gap-3">
+          <div id="shortcut-grid" class="flex flex-wrap justify-center gap-3">
             <!-- Shortcut cards will be injected here by JavaScript -->
           </div>
         </main>
@@ -129,7 +130,7 @@
           const shiftFDetail = createShortcutDetailHTML(shortcut.shift_f, `Shift + ${shortcut.key}`);
           
           allCardsHTML += `
-            <div class="bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 rounded-xl shadow-lg hover:shadow-cyan-500/20 transition-all duration-300 transform hover:-translate-y-1">
+            <div class="bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 rounded-xl shadow-lg hover:shadow-cyan-500/20 transition-all duration-300 transform hover:-translate-y-1 w-56">
               <div class="p-2 flex flex-col gap-2">
                 ${fDetail}
                 ${shiftFDetail}
